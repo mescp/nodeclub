@@ -1,3 +1,12 @@
+
+## docker编译运行
+
+1. 运行`docker build --pull --rm -f "Dockerfile" -t nodeclub_app "."`
+
+2. 启动`docker-compose up -d`
+
+3. 访问`http://localhost:3300`
+
 Nodeclub
 =
 

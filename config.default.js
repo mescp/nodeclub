@@ -35,10 +35,10 @@ var config = {
   cnzz_tracker_id: '',
 
   // mongodb 配置
-  db: 'mongodb://127.0.0.1/node_club_dev',
+  db: 'mongodb://mongo/node_club_dev',
 
   // redis 配置，默认是本地
-  redis_host: '127.0.0.1',
+  redis_host: 'redis',
   redis_port: 6379,
   redis_db: 0,
   redis_password: '',
@@ -80,7 +80,7 @@ var config = {
   weibo_id: 'your_weibo_id',
 
   // admin 可删除话题，编辑标签。把 user_login_name 换成你的登录名
-  admins: { user_login_name: true },
+  admins: { user_login_name: 'ebradmin' },
 
   // github 登陆的配置
   GITHUB_OAUTH: {
@@ -137,7 +137,7 @@ var config = {
 };
 
 if (process.env.NODE_ENV === 'test') {
-  config.db = 'mongodb://127.0.0.1/node_club_test';
+  config.db = 'mongodb://mongo/node_club_test';
 }
 
 module.exports = config;

@@ -1,0 +1,38 @@
+version: '3'
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  app:
+    image: nodeclub_app:latest
+    volumes:
+     - /data/ebr_Blog/logs:/usr/src/app/logs
+    ports:
+     - 127.0.0.1:3300:3000
+    depends_on:
+     - mongo
+     - redis
+    networks:
+     - default
+    environment:
+     - MONGO_PORT_27017_TCP_ADDR=ebr_Blog_mongo_1
+     - MONGO_PORT_27017_TCP_PORT=27017
+     - REDIS_PORT_6379_TCP_ADDR=ebr_Blog_redis_1
+     - REDIS_PORT_6379_TCP_PORT=6379
+
+  mongo:
+    image: mongo:4.0.3
+    volumes:
+     - /data/ebr_Blog/db:/data/db
+    networks:
+     - default
+    ports:
+     - 127.0.0.1:27017:27017
+  redis:
+    image: redis:4.0.9
+    volumes:
+     - /data/ebr_Blog/redis:/data
+    networks:
+     - default
